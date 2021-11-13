@@ -1,0 +1,44 @@
+{% extends 'post/base.html' %}
+{% load static %}
+    {% block title %}Profile-{{user}}{% endblock title %}
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'userProfile/profile.css' %}">
+    {% endblock css %}
+{% block body %}
+<section class="profile">
+    <div>
+        <div class="profile-pic">
+        {% load static %}
+        {% if profile.profile_pic%}
+            <a href="{%url 'profile-decorator-update' profile.id%}" class="text_dec-none">
+        {% else %}
+            <a href="{%url 'profile-decorator'%}" class="text_dec-none">
+
+        {% endif %}
+                <img 
+                    src="/media/{{profile.profile_pic}}" 
+                    alt="{{basic_info.first_name}}'s Profile"
+                />
+            </a>
+        </div>
+        <p class="username"><strong>@{{ user }}</strong></p>
+        <p></p>
+        <p class="bio">{{profile.bio}}</p>
+        
+        {% if basic_info %}
+            
+            <p class="name info"> {{basic_info.first_name}}  {{basic_info.last_name}}</p>
+            <p>{{basic_info.sex}}, {{basic_info.age}}</p>
+        {% else %}
+            <p>Look's like you haven't setup your basic info, <a href="{%url 'basic-info'%}"> click here</a></p>
+            
+        {%endif%}
+        {% if address.local != NULL  %}
+            <p class="address info"><a class="text_dec-none" href="{%url 'address-update' address.pk%}">{{address.local}}</a></p>
+            {% else %}
+            <p> look's like address is not updated, <a href="{% url 'address' %}">click here</a> </p>
+        {% endif %}
+        {% comment %} <a class="btn logout text_dec-none" href="{%url 'logout'%}">Logout</a> {% endcomment %}
+    </div>
+</section>
+{% endblock body %}

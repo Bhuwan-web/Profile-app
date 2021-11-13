@@ -1,0 +1,18 @@
+.pagination{
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+    margin:2rem auto;
+    font-size: 3rem;
+}
+.page-link.active a:hover{
+    background-color: #333;
+    border-radius: 1rem;;
+}
+.pagination .page-link a{
+    padding:0 2rem;
+}
+.pagination .page-link.disabled,.page-link.disabled a:hover{
+    cursor:no-drop;
+    color:#777;
+}

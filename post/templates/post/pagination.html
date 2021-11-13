@@ -1,0 +1,75 @@
+<nav class="pagination_nav"> 
+    {% if is_paginated %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'post/pagination.css' %}">
+    {% comment %} ...........................<Prev Page>..................................  {% endcomment %}
+    <ul class="pagination">
+        {% if page_obj.has_previous %}
+            <li 
+                class="page-link active text_dec-none">
+                <a 
+                    href="?page={{page_obj.previous_page_number}}" 
+                    class="text_dec-none hover">
+                &laquo;
+                </a> 
+            </li>
+        {% else %}
+            <li 
+                class="page-link disabled text_dec-none">
+                <a 
+                    href="#" 
+                    class="text_dec-none hover">
+                &laquo;
+                </a> 
+            </li>
+        {% endif %}
+       
+{% comment %} ..........................Middle List.......................... {% endcomment %}
+
+        
+        {% for page in paginator.page_range %}
+            {% if page_obj.number == page %}
+                <li 
+                class="text_dec-none page-link disabled">
+                <a 
+                    class="text_dec-none hover">
+                {{page}}
+                </a> 
+            </li>
+            {% else %}
+                <li 
+                class="text_dec-none page-link active">
+                <a 
+                    href="?page={{page}}" 
+                    class="text_dec-none hover">
+                {{page}}
+                </a> 
+            </li>
+            {% endif %}
+        {% endfor %}
+
+
+{% comment %} ..............................Next Page........................  {% endcomment %}
+       {% if page_obj.has_next %}
+            <li 
+                class="text_dec-none page-link active">
+                <a 
+                    href="?page={{page_obj.next_page_number}}" 
+                    class="text_dec-none hover">
+                &raquo;
+                </a> 
+            </li>
+        {% else %}
+            <li 
+                class="text_dec-none page-link disabled">
+                <a 
+                    href="#" 
+                    class="text_dec-none hover">
+                &raquo;
+                </a> 
+            </li>
+        {% endif %}
+    
+    </ul>
+    {% endif %}
+</nav>

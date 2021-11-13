@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}
+    {% if title %} 
+    {% else %}
+    WebGuf
+    {% endif %}   
+{% endblock title %}</title>
+
+    <link rel="stylesheet" href="{% static 'post/base.css' %}">
+    <link rel="stylesheet" href="{% static 'post/navbar.css' %}">
+
+    {% block css %}{% endblock css %}
+</head>
+<body>
+    <nav id="navbar" class="navbar">
+        <div class="logo">WebGuf</div>
+        <div class="menus">
+        <ul>
+            <li><a href="{%url 'home'%}" class="text_dec-none">Home</a></li>
+            {% if not user.is_anonymous %}
+                <li><a href="{%url 'profile'%}" class="text_dec-none">Profile</a></li>
+                <li><a href="{%url 'logout'%}" class="text_dec-none">Logout</a></li>
+            {% else %}
+                <li><a href="{%url 'signup'%}" class="text_dec-none">Register</a></li>
+                <li><a href="{%url 'login'%}" class="text_dec-none">Login</a></li>
+            {% endif %}
+            
+            
+        </ul>
+        </div>
+    </nav>
+<section class="body">
+
+    {% block body %}{% endblock body %}
+
+</section>
+</body>
+
+<footer>
+&copy; Bhuwan Panta
+</footer>
+</html>

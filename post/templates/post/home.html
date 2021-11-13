@@ -1,0 +1,47 @@
+{% extends 'post/base.html' %}
+{% load static %}
+{% block title %}WebGuf{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'post/home.css' %}">
+{% endblock css %}
+{% block body %}
+    <h2 class="user">
+        Hello 
+        {% if profile.login_infos %}
+        <a 
+        href="{% url 'profile' %}" 
+        class="text_dec-none">
+            {{profile.login_infos.username}}
+        </a>
+        {% else %}
+        <a 
+        href="{% url 'profile' %}" 
+        class="text_dec-none">
+            Anonymous
+        </a>
+        {% endif %}
+        
+    </h2>
+    <article class="posts">
+    <div class="make-post">
+    {% if not user.is_anonymous %}
+        {% include 'post/post.html' %}
+    {% endif %}
+        
+    </div>
+        {% for post in posts %}
+            <div class="post">
+            <div class="post-before">  
+                <span class="author">
+                {{post.author}}
+                </span>
+                <span class="posted_at">{{post.posted_at}}<br></span>
+                </div>  
+                <span class="post-post">{{post.post}}</span>
+            </div>
+        {% endfor %}
+        
+    {% include 'post/pagination.html' %}
+    
+    </article>
+{% endblock body %}

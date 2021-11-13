@@ -1,0 +1,25 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+html{
+    font-size:0.625em;
+}
+.body{
+    min-height:calc(100vh - 11rem)
+}
+footer{
+    height: 4rem;
+    background-color: #333;
+    color: #ddd;
+    line-height: 4rem;
+    text-align: center;
+    font-size: 3rem;
+
+}
+.text_dec-none{
+    text-decoration: none;
+    color:inherit;
+    list-style-type:none;
+}

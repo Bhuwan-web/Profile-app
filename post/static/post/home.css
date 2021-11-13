@@ -1,0 +1,27 @@
+.user{
+    font-size: 3rem;
+}
+.posts{
+    font-size:2.2rem;
+    max-width:75rem;
+    margin:2rem auto;
+}
+.post{
+    margin-bottom: 2rem;
+    background-color: #eee;
+    padding:1.2rem;
+    border-radius:0.5rem;
+}
+.post .author{
+    color:#777;
+}
+.post .author::after{
+    content:",";
+}
+.post .post-before{
+    border-bottom: cadetblue 1px solid;
+}
+.post .posted_at{
+    color:#777;
+    font-size: 1.3rem;
+}
